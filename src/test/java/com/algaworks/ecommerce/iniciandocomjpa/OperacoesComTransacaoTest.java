@@ -27,18 +27,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest{
     }
 
     @Test
-    public void abrirEFecharTransacao(){
-        Produto produto = new Produto();
-        entityManager.getTransaction().begin();
-
-        entityManager.persist(produto);
-        entityManager.merge(produto);
-        entityManager.remove(produto);
-
-        entityManager.getTransaction().commit();
-    }
-
-    @Test
     public void removerObjeto(){
         Produto produto = entityManager.find(Produto.class,1);
         entityManager.getTransaction().begin();
@@ -66,8 +54,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest{
         Assert.assertNotNull(produtoVerificado);
         Assert.assertEquals("Kindle Paperwhite",produtoVerificado.getNome());
     }
-
-
     @Test
     public void atualizarObjetoGerenciado(){
         Produto produto = entityManager.find(Produto.class,1);
@@ -98,6 +84,22 @@ public class OperacoesComTransacaoTest extends EntityManagerTest{
 
         Assert.assertNotNull(produtoVerifica);
     }
+
+    @Test
+    public void impedirOperacaoComBancoDeDados(){
+        Produto produto = entityManager.find(Produto.class,1);
+        entityManager.detach(produto);
+
+        entityManager.getTransaction().begin();
+        produto.setNome("Kindle Paperwhite 2 Geração");
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+        Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
+
+        Assert.assertEquals("Kindle",produtoVerificado.getNome());
+    }
+
 
 
 }

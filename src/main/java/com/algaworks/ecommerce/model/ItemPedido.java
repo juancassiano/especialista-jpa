@@ -8,20 +8,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
-@Entity
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Produto {
+@Entity
+public class ItemPedido {
 
-    @Id
     @EqualsAndHashCode.Include
+    @Id
     private Integer id;
 
-    private String nome;
+    private Integer pedidoId;
 
-    private String descricao;
+    private Integer produtoId;
 
-    private BigDecimal preco;
+    private BigDecimal precoProduto;
+
+    private Integer quantidade;
 
 }

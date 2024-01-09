@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +24,7 @@ public class Pedido {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     @Column(name = "data_pedido")
-    private LocalDateTime datapedido;
+    private LocalDateTime dataPedido;
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
     @Column(name = "nota_fiscal_id")
@@ -33,5 +34,7 @@ public class Pedido {
     private StatusPedido status;
     @Embedded
     private EnderecoEntregaPedido enderecoEntrega;
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemPedido> itens;
 
 }

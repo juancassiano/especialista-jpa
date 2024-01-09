@@ -12,7 +12,6 @@ public class MapeandoEnumeracoesTest extends EntityManagerTest {
     public void testarEnum(){
         Cliente cliente = new Cliente();
 
-        cliente.setId(5);
         cliente.setNome("Juan");
         cliente.setSexo(SexoCliente.MASCULINO);
 
@@ -22,7 +21,7 @@ public class MapeandoEnumeracoesTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        Cliente clienteVerificado = entityManager.find(Cliente.class, 5);
+        Cliente clienteVerificado = entityManager.find(Cliente.class, cliente.getId());
         Assert.assertNotNull(clienteVerificado);
     }
 }

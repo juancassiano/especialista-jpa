@@ -9,7 +9,6 @@ public class CrudTest extends EntityManagerTest{
     @Test
     public void inserirCliente(){
         Cliente cliente = new Cliente();
-        cliente.setId(3);
         cliente.setNome("Cliente 3");
 
         entityManager.getTransaction().begin();
@@ -18,7 +17,7 @@ public class CrudTest extends EntityManagerTest{
 
         entityManager.clear();
 
-        Cliente clienteVerificado = entityManager.find(Cliente.class, 3);
+        Cliente clienteVerificado = entityManager.find(Cliente.class, cliente.getId());
         Assert.assertNotNull(clienteVerificado);
     }
 
@@ -32,7 +31,7 @@ public class CrudTest extends EntityManagerTest{
     @Test
     public void atualizarCliente(){
         Cliente cliente = new Cliente();
-        cliente.setId(2);
+        cliente.setId(1);
         cliente.setNome("Cliente 2");
 
         entityManager.getTransaction().begin();

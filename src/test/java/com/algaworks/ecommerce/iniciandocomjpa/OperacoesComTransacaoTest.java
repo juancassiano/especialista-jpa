@@ -11,7 +11,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest{
     @Test
     public void inserirPrimeiroObjeto(){
         Produto produto = new Produto();
-        produto.setId(2);
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para as suas fotos");
         produto.setPreco(new BigDecimal(5000));
@@ -40,16 +39,15 @@ public class OperacoesComTransacaoTest extends EntityManagerTest{
     @Test
     public void atualizarObjeto(){
         Produto produto = new Produto();
-        produto.setId(1);
         produto.setNome("Kindle Paperwhite");
         produto.setDescricao("Conheça o novo Kindle");
         produto.setPreco(new BigDecimal(599));
 
         entityManager.getTransaction().begin();
-        entityManager.merge(produto);
+        Produto produtoSalvo = entityManager.merge(produto);
         entityManager.getTransaction().commit();
         entityManager.clear();
-        Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
+        Produto produtoVerificado = entityManager.find(Produto.class, produtoSalvo.getId());
 
         Assert.assertNotNull(produtoVerificado);
         Assert.assertEquals("Kindle Paperwhite",produtoVerificado.getNome());
@@ -70,17 +68,16 @@ public class OperacoesComTransacaoTest extends EntityManagerTest{
     @Test
     public void inserirObjetoComMerge(){
         Produto produto = new Produto();
-        produto.setId(4);
         produto.setNome("Microfone Rode Videmic");
         produto.setDescricao("A melhor qualidade de som");
         produto.setPreco(new BigDecimal(1000));
 
         entityManager.getTransaction().begin();
-        entityManager.merge(produto);
+        Produto produtoSalvo = entityManager.merge(produto);
         entityManager.getTransaction().commit();
         entityManager.clear();
 
-        Produto produtoVerifica = entityManager.find(Produto.class, produto.getId());
+        Produto produtoVerifica = entityManager.find(Produto.class, produtoSalvo.getId());
 
         Assert.assertNotNull(produtoVerifica);
     }

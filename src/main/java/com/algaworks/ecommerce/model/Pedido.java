@@ -27,8 +27,7 @@ public class Pedido {
     private LocalDateTime dataPedido;
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
-    @OneToOne
-    @JoinColumn(name = "nota_fiscal_id")
+    @OneToOne(mappedBy = "pedido")
     private NotaFiscal notaFiscal;
     private BigDecimal total;
     @Enumerated(EnumType.STRING)

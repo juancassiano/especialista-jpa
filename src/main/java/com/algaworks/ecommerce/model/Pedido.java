@@ -20,7 +20,8 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     @Column(name = "data_pedido")
@@ -37,6 +38,7 @@ public class Pedido {
     @OneToOne(mappedBy = "pedido")
     private PagamentoCartao pagamento;
     @OneToMany(mappedBy = "pedido")
+//    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
     private List<ItemPedido> itens;
 
 }

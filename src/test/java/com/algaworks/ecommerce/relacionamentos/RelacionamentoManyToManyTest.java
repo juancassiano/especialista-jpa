@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class ManyToManyRelacionamentoTest extends EntityManagerTest {
+public class RelacionamentoManyToManyTest extends EntityManagerTest {
 
     @Test
     public void verificarRelacionamento() {

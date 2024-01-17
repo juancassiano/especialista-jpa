@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.conhecendoEntityManager;
+package com.algaworks.ecommerce.conhecendoentitymanager;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Pedido;

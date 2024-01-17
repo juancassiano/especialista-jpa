@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.mapeamentobasico;
 
-import com.algaworks.ecommerce.iniciandocomjpa.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.SexoCliente;
 import org.junit.Assert;

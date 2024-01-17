@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.conhecendoEntityManager;
 
-import com.algaworks.ecommerce.iniciandocomjpa.EntityManagerTest;
+import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Categoria;
 import org.junit.Test;
 

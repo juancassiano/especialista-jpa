@@ -1,10 +1,11 @@
 package com.algaworks.ecommerce.iniciandocomjpa;
 
+import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CrudTest extends EntityManagerTest{
+public class CrudTest extends EntityManagerTest {
 
     @Test
     public void inserirCliente(){

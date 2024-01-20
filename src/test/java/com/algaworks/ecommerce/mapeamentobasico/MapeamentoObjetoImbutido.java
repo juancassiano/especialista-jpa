@@ -26,7 +26,7 @@ public class MapeamentoObjetoImbutido extends EntityManagerTest {
         enderecoEntregaPedido.setEstado("RJ");
 
         Pedido pedido = new Pedido();
-        pedido.setDataPedido(LocalDateTime.now());
+        pedido.setDataUltimaAtualizacao(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));
         pedido.setEnderecoEntrega(enderecoEntregaPedido);

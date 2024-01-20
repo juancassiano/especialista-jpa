@@ -24,8 +24,10 @@ public class Pedido {
     @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    @Column(name = "data_pedido")
-    private LocalDateTime dataPedido;
+    @Column(name = "data_criacao")
+    private LocalDateTime dataCricao;
+    @Column(name = "data_ultima_atualizacao")
+    private LocalDateTime dataUltimaAtualizacao;
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
     @OneToOne(mappedBy = "pedido")
@@ -41,4 +43,22 @@ public class Pedido {
 //    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
     private List<ItemPedido> itens;
 
+    @PrePersist
+    public void aoPersistir(){
+        dataCricao = LocalDateTime.now();
+        calcularTotal();
+    }
+
+    @PreUpdate
+    public void aoAtualizar(){
+        dataUltimaAtualizacao = LocalDateTime.now();
+        calcularTotal();
+    }
+
+    public void calcularTotal(){
+        if(itens != null){
+            total = itens.stream().map(ItemPedido::getPrecoProduto)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        }
+    }
 }

@@ -32,31 +32,37 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
     @Test
     public void verificarRelacionamentoItemPedido(){
-//        Cliente cliente = entityManager.find(Cliente.class, 1);
-//        Produto produto = entityManager.find(Produto.class, 1);
-//
-//        Pedido pedido = new Pedido();
-//        pedido.setStatus(StatusPedido.AGUARDANDO);
-//        pedido.setDataUltimaAtualizacao(LocalDateTime.now());
-//        pedido.setTotal(BigDecimal.TEN);
-//        pedido.setCliente(cliente);
-//
-//        ItemPedido itemPedido = new ItemPedido();
-//        itemPedido.setPrecoProduto(produto.getPreco());
-//        itemPedido.setQuantidade(1);
-//        itemPedido.setPedido(pedido);
-//        itemPedido.setProduto(produto);
-//
-//        entityManager.getTransaction().begin();
-//        entityManager.persist(pedido);
-//        entityManager.persist(itemPedido);
-//        entityManager.getTransaction().commit();
-//
-//        entityManager.clear();
-//
-//        ItemPedido itemPedidoVerificado = entityManager.find(ItemPedido.class, itemPedido.getId());
-//
-//        Assert.assertNotNull(itemPedidoVerificado.getPedido());
-//        Assert.assertNotNull(itemPedidoVerificado.getProduto());
+        entityManager.getTransaction().begin();
+        Cliente cliente = entityManager.find(Cliente.class, 1);
+        Produto produto = entityManager.find(Produto.class, 1);
+
+        Pedido pedido = new Pedido();
+        pedido.setStatus(StatusPedido.AGUARDANDO);
+        pedido.setDataUltimaAtualizacao(LocalDateTime.now());
+        pedido.setTotal(BigDecimal.TEN);
+        pedido.setCliente(cliente);
+
+        entityManager.persist(pedido);
+        entityManager.flush();
+
+        ItemPedido itemPedido = new ItemPedido();
+        itemPedido.setPedidoId(pedido.getId());
+        itemPedido.setProdutoId(produto.getId());
+        itemPedido.setPrecoProduto(produto.getPreco());
+        itemPedido.setQuantidade(1);
+        itemPedido.setPedido(pedido);
+        itemPedido.setProduto(produto);
+
+        entityManager.persist(itemPedido);
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        ItemPedido itemPedidoVerificado = entityManager.find(ItemPedido.class, new ItemPedidoId(
+                pedido.getId(), produto.getId()
+        ));
+
+        Assert.assertNotNull(itemPedidoVerificado.getPedido());
+        Assert.assertNotNull(itemPedidoVerificado.getProduto());
     }
 }

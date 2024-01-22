@@ -27,9 +27,9 @@ public class Pedido {
     @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    @Column(name = "data_criacao")
-    private LocalDateTime dataCricao;
-    @Column(name = "data_ultima_atualizacao")
+    @Column(name = "data_criacao", updatable = false)
+    private LocalDateTime dataCriacao;
+    @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao;
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
@@ -48,7 +48,7 @@ public class Pedido {
 
     @PrePersist
     public void aoPersistir(){
-        dataCricao = LocalDateTime.now();
+        dataCriacao = LocalDateTime.now();
         calcularTotal();
     }
 

@@ -1,5 +1,7 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.listener.GenericoListener;
+import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EntityListeners({GerarNotaFiscalListener.class, GenericoListener.class})
 @Entity
 @Table(name = "pedido")
 public class Pedido {
@@ -60,5 +63,9 @@ public class Pedido {
             total = itens.stream().map(ItemPedido::getPrecoProduto)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
         }
+    }
+
+    public boolean isPago(){
+        return StatusPedido.PAGO.equals(status);
     }
 }

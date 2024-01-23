@@ -25,8 +25,9 @@ public class ChaveCompostaTest extends EntityManagerTest {
         entityManager.flush();
 
         ItemPedido item = new ItemPedido();
-        item.setPedidoId(pedido.getId());
-        item.setProdutoId(produto.getId());
+//        item.setPedidoId(pedido.getId()); id Class
+//        item.setProdutoId(produto.getId()); id Class
+        item.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
         item.setPedido(pedido);
         item.setProduto(produto);
         item.setPrecoProduto(produto.getPreco());

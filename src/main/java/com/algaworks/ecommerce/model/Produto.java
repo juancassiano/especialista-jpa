@@ -36,4 +36,9 @@ public class Produto {
     private LocalDateTime dataCriacao;
     @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao;
+    @ElementCollection
+    @CollectionTable(name = "produto_tag",
+            joinColumns = @JoinColumn(name = "produto_id"))
+    @Column(name = "tag")
+    private List<String> tags;
 }

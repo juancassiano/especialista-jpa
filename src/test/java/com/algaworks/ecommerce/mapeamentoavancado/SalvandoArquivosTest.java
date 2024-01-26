@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.NotaFiscal;
 import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -49,13 +50,37 @@ public class SalvandoArquivosTest extends EntityManagerTest {
 
     }
 
-    private static byte[] carregarNotaFiscal(){
+    @Test
+    public void salvarFoto(){
+        entityManager.getTransaction().begin();
+        Produto produto = entityManager.find(Produto.class,1);
+        produto.setFoto(carregarFoto());
+
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
+
+        Assert.assertNotNull(produtoVerificado);
+        Assert.assertTrue(produtoVerificado.getFoto().length >0);
+
+    }
+
+    private static byte[] carregarNotaFiscal() {
+        return carregarArquivo("/nota-fiscal.xml");
+    }
+
+    private static byte[] carregarFoto(){
+        return carregarArquivo("/kindle.jpg");
+    }
+
+    private static byte[] carregarArquivo(String nome){
         try{
             return SalvandoArquivosTest.class.getResourceAsStream(
-                    "/nota-fiscal.xml").readAllBytes();
+                    nome).readAllBytes();
         }catch (IOException e){
             throw new RuntimeException(e);
         }
     }
-
 }

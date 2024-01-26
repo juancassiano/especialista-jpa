@@ -2,11 +2,13 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Atributo;
+import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ElementCollectionTest extends EntityManagerTest {
 
@@ -22,7 +24,8 @@ public class ElementCollectionTest extends EntityManagerTest {
 
         Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
         Assert.assertFalse(produtoVerificado.getTags().isEmpty());
-    }@Test
+    }
+    @Test
     public void aplicarAtributos(){
         entityManager.getTransaction().begin();
 
@@ -34,5 +37,18 @@ public class ElementCollectionTest extends EntityManagerTest {
 
         Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
         Assert.assertFalse(produtoVerificado.getAtributos().isEmpty());
+    }
+    @Test
+    public void aplicarContato(){
+        entityManager.getTransaction().begin();
+
+        Cliente cliente = entityManager.find(Cliente.class,1);
+        cliente.setContatos(Collections.singletonMap("email", "fernando@email.com"));
+
+        entityManager.getTransaction().commit();
+        entityManager.clear();
+
+        Cliente clienteVerificado = entityManager.find(Cliente.class, cliente.getId());
+        Assert.assertEquals("fernando@email.com",clienteVerificado.getContatos().get("email"));
     }
 }

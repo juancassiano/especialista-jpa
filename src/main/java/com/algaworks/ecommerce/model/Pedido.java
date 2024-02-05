@@ -35,7 +35,7 @@ public class Pedido  extends EntidadeBaseInteger {
     @Embedded
     private EnderecoEntregaPedido enderecoEntrega;
     @OneToOne(mappedBy = "pedido")
-    private PagamentoCartao pagamento;
+    private Pagamento pagamento;
     @OneToMany(mappedBy = "pedido")
 //    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
     private List<ItemPedido> itens;

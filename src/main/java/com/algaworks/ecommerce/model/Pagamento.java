@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @DiscriminatorColumn(name = "tipo_pagamento", discriminatorType = DiscriminatorType.STRING)
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
 //@Table(name = "pagamento") Ignorada na estratégia table per class
 @Table(name = "pagamento")

@@ -18,6 +18,8 @@ public abstract class Pagamento extends EntidadeBaseInteger{
     @OneToOne(optional = false)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
+
     @Enumerated(EnumType.STRING)
+    @Column(length = 30, nullable = false)
     private StatusPagamento status;
 }

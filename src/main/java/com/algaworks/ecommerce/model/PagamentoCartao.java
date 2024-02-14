@@ -14,7 +14,8 @@ import java.math.BigDecimal;
 @Entity
 //@Table(name = "pagamento_cartao") Ignorando pela estratrégia single table
 public class PagamentoCartao extends Pagamento{
-    @Column(name = "numero_cartao")
+
+    @Column(name = "numero_cartao", length = 50, nullable = false)
     private String numeroCartao;
 
 

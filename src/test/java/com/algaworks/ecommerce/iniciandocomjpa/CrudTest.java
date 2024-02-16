@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
+import com.algaworks.ecommerce.model.SexoCliente;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,8 +11,9 @@ public class CrudTest extends EntityManagerTest {
     @Test
     public void inserirCliente(){
         Cliente cliente = new Cliente();
-        cliente.setNome("Cliente 3");
-
+        cliente.setNome("José Lucas");
+        cliente.setCpf("333");
+        cliente.setSexo(SexoCliente.MASCULINO);
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
         entityManager.getTransaction().commit();
@@ -26,14 +28,16 @@ public class CrudTest extends EntityManagerTest {
     public void buscarClientePorId(){
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Assert.assertNotNull(cliente);
-        Assert.assertEquals("Cliente 1", cliente.getNome());
+        Assert.assertEquals("Fernando Medeiros", cliente.getNome());
     }
 
     @Test
     public void atualizarCliente(){
         Cliente cliente = new Cliente();
         cliente.setId(1);
-        cliente.setNome("Cliente 2");
+        cliente.setNome("Fernando Medeiros Silva");
+        cliente.setCpf("000");
+        cliente.setSexo(SexoCliente.MASCULINO);
 
         entityManager.getTransaction().begin();
         entityManager.merge(cliente);
@@ -42,7 +46,7 @@ public class CrudTest extends EntityManagerTest {
         entityManager.clear();
 
         Cliente clienteverificado = entityManager.find(Cliente.class, cliente.getId());
-        Assert.assertEquals("Cliente 2", clienteverificado.getNome());
+        Assert.assertEquals("Fernando Medeiros Silva", clienteverificado.getNome());
     }
 
     @Test

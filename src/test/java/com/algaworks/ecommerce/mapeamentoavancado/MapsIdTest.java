@@ -41,6 +41,7 @@ public class MapsIdTest extends EntityManagerTest {
         pedido.setDataCriacao(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(produto.getPreco());
+        
 
         ItemPedido itemPedido = new ItemPedido();
         itemPedido.setId(new ItemPedidoId());

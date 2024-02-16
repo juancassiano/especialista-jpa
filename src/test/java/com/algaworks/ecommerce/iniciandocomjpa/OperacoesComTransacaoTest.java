@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class OperacoesComTransacaoTest extends EntityManagerTest {
 
@@ -15,6 +16,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para as suas fotos");
         produto.setPreco(new BigDecimal(5000));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(produto);
@@ -28,11 +30,11 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
     @Test
     public void removerObjeto(){
-        Produto produto = entityManager.find(Produto.class,1);
+        Produto produto = entityManager.find(Produto.class,3);
         entityManager.getTransaction().begin();
         entityManager.remove(produto);
         entityManager.getTransaction().commit();
-        Produto produtoVerificacao = entityManager.find(Produto.class,1);
+        Produto produtoVerificacao = entityManager.find(Produto.class,3);
 
         Assert.assertNull(produtoVerificacao);
     }
@@ -72,6 +74,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
         produto.setNome("Microfone Rode Videmic");
         produto.setDescricao("A melhor qualidade de som");
         produto.setPreco(new BigDecimal(1000));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         Produto produtoSalvo = entityManager.merge(produto);

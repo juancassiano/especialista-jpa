@@ -6,6 +6,7 @@ import com.algaworks.ecommerce.model.Produto;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class ContextoDePersistenciaTest extends EntityManagerTest {
 
@@ -16,11 +17,13 @@ public class ContextoDePersistenciaTest extends EntityManagerTest {
         entityManager.getTransaction().begin();
         produto.setPreco(new BigDecimal(100));
         Produto produto2 = new Produto();
+        produto2.setDataCriacao(LocalDateTime.now());
         produto2.setNome("Caneca de café");
         produto2.setDescricao("Caneca para café");
         entityManager.persist(produto2);
 
         Produto produto3 = new Produto();
+        produto3.setDataCriacao(LocalDateTime.now());
         produto3.setNome("Caneca de chá");
         produto3.setPreco(new BigDecimal(100));
         produto3 = entityManager.merge(produto3);

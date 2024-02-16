@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class MapeamentoObjetoImbutido extends EntityManagerTest {
 
     @Test
-    public void analizarMapeamentoObjetoImbutido() {
+    public void analisarMapeamentoObjetoImbutido() {
         Cliente cliente = entityManager.find(Cliente.class, 1);
 
         EnderecoEntregaPedido enderecoEntregaPedido = new EnderecoEntregaPedido();

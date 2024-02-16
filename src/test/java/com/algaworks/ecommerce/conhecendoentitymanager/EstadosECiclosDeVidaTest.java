@@ -9,6 +9,7 @@ public class EstadosECiclosDeVidaTest extends EntityManagerTest {
     @Test
     public void analisarEstados(){
         Categoria categoriaNovo = new Categoria(); //Categoria Nova
+        categoriaNovo.setNome("Eletrônicos");
         Categoria categoriaGerenciadaMerge = entityManager.merge(categoriaNovo); //Passa a Ser Gerenciada
         Categoria categoriaGerenciada = entityManager.find(Categoria.class, 1);
 

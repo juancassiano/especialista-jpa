@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +29,8 @@ public class Produto extends EntidadeBaseInteger {
     @ManyToMany
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+            inverseJoinColumns = @JoinColumn(name = "categoria_id"),
+            foreignKey = @ForeignKey(name = "fk_produto_categoria"))
     private List<Categoria>categorias;
 
     @OneToOne(mappedBy = "produto")
@@ -44,13 +44,15 @@ public class Produto extends EntidadeBaseInteger {
 
     @ElementCollection
     @CollectionTable(name = "produto_tag",
-            joinColumns = @JoinColumn(name = "produto_id"))
+            joinColumns = @JoinColumn(name = "produto_id"),
+            foreignKey = @ForeignKey(name = "fk_produto_tag"))
     @Column(name = "tag", length = 50, nullable = false)
     private List<String> tags;
 
     @ElementCollection
     @CollectionTable(name = "produto_atributo",
-    joinColumns = @JoinColumn(name = "produto_id"))
+        joinColumns = @JoinColumn(name = "produto_id"),
+        foreignKey = @ForeignKey(name = "fk_produto_atributo"))
     private List<Atributo> atributos;
 
     @Lob

@@ -28,7 +28,7 @@ public class CrudTest extends EntityManagerTest {
     public void buscarClientePorId(){
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Assert.assertNotNull(cliente);
-        Assert.assertEquals("Fernando Medeiros", cliente.getNome());
+        Assert.assertEquals("Fernando Medeiros Silva", cliente.getNome());
     }
 
     @Test

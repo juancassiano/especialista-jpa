@@ -21,7 +21,7 @@ public class Produto extends EntidadeBaseInteger {
     @Column(name = "nome", length = 255, nullable = false)
     private String nome;
 
-    @Column(columnDefinition = "varchar (275) default 'descricao'")
+    @Lob
     private String descricao;
 
     @Column(precision = 19, scale = 2)

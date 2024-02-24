@@ -5,7 +5,7 @@ import com.algaworks.ecommerce.model.NotaFiscal;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
 import java.io.IOException;

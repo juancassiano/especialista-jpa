@@ -1,6 +1,6 @@
 package com.algaworks.ecommerce.ddl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class DDLTest {
 

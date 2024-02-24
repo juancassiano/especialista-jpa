@@ -5,7 +5,7 @@ import com.algaworks.ecommerce.model.Atributo;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;

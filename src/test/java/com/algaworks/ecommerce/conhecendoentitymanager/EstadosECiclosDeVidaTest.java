@@ -2,7 +2,7 @@ package com.algaworks.ecommerce.conhecendoentitymanager;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Categoria;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class EstadosECiclosDeVidaTest extends EntityManagerTest {
 

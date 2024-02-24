@@ -3,7 +3,7 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -40,20 +40,23 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
     }
 
     @Test
-    public void atualizarObjeto(){
+    public void atualizarObjeto() {
         Produto produto = new Produto();
+
+        produto.setId(1);
         produto.setNome("Kindle Paperwhite");
-        produto.setDescricao("Conheça o novo Kindle");
+        produto.setDescricao("Conheça o novo Kindle.");
         produto.setPreco(new BigDecimal(599));
 
         entityManager.getTransaction().begin();
-        Produto produtoSalvo = entityManager.merge(produto);
+        entityManager.merge(produto);
         entityManager.getTransaction().commit();
-        entityManager.clear();
-        Produto produtoVerificado = entityManager.find(Produto.class, produtoSalvo.getId());
 
-        Assert.assertNotNull(produtoVerificado);
-        Assert.assertEquals("Kindle Paperwhite",produtoVerificado.getNome());
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertNotNull(produtoVerificacao);
+        Assert.assertEquals("Kindle Paperwhite", produtoVerificacao.getNome());
     }
     @Test
     public void atualizarObjetoGerenciado(){

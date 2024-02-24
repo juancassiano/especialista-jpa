@@ -2,7 +2,7 @@ package com.algaworks.ecommerce;
 
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ConsultandoRegistrosTest extends EntityManagerTest {
 

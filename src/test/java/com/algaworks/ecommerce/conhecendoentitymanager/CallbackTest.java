@@ -5,7 +5,7 @@ import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.StatusPedido;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,7 +1,10 @@
 package com.algaworks.ecommerce;
 
-import com.algaworks.ecommerce.model.Produto;
 import org.junit.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,23 +16,23 @@ public class EntityManagerTest {
 
     protected EntityManager entityManager;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpBeforeClass() {
         entityManagerFactory = Persistence
                 .createEntityManagerFactory("Ecommerce-PU");
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownAfterClass() {
         entityManagerFactory.close();
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         entityManager = entityManagerFactory.createEntityManager();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         entityManager.close();
     }

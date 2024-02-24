@@ -3,7 +3,7 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

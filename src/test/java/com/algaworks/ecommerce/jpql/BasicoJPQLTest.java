@@ -14,6 +14,13 @@ import java.util.List;
 public class BasicoJPQLTest extends EntityManagerTest {
 
     @Test
+    public void projetarResultado(){
+        String jpql = "select id, nome from Produto";
+        TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql,Object[].class);
+        List<Object[]> lista = typedQuery.getResultList();
+        Assert.assertTrue(lista.get(0).length ==2);
+    }
+    @Test
     public void selecionarUmAtributoParaRetorno(){
         String jpql = "select p.nome from Produto p";
 

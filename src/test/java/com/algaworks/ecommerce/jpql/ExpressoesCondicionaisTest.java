@@ -6,10 +6,21 @@ import org.junit.jupiter.api.Test;
 
 import javax.persistence.TypedQuery;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
 
+    @Test
+    public void usarMaiorMenorComData(){
+        String jpql = "select p from Pedido p " +
+                " where p.dataCriacao > :dataInicial";
+
+        TypedQuery<Object[]>typedQuery = entityManager.createQuery(jpql, Object[].class);
+        typedQuery.setParameter("dataInicial", LocalDateTime.now().minusDays(2));
+        List<Object[]> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+    }
     @Test
     public void usarMaiorMenor(){
         String jpql = "select p from Produto p " +

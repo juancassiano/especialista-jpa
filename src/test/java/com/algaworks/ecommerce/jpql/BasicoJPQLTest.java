@@ -14,6 +14,16 @@ import java.util.List;
 public class BasicoJPQLTest extends EntityManagerTest {
 
     @Test
+    public void usarOrdenadorResultado(){
+        String jpql = "select c from Cliente c order by c.nome desc";
+
+        TypedQuery<Cliente> typedQuery = entityManager.createQuery(jpql, Cliente.class);
+        List<Cliente> lista = typedQuery.getResultList();
+        lista.forEach(c -> System.out.println(c.getId() + " - " + c.getNome()));
+        Assert.assertFalse(lista.isEmpty());
+    }
+
+    @Test
     public void projetarNoDTO(){
         String jpql = "select new com.algaworks.ecommerce.dto.ProdutoDTO(id, nome) from Produto";
         TypedQuery<ProdutoDTO> typedQuery = entityManager.createQuery(jpql,ProdutoDTO.class);

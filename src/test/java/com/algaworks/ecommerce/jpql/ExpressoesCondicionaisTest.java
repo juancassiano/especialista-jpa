@@ -12,6 +12,18 @@ import java.util.List;
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
 
     @Test
+    public void usarBetween(){
+        String jpql = "select p from Pedido p " +
+                " where p.dataCriacao between :dataInicial and :dataFinal";
+
+        TypedQuery<Object[]>typedQuery = entityManager.createQuery(jpql, Object[].class);
+        typedQuery.setParameter("dataInicial", LocalDateTime.now().minusDays(2));
+        typedQuery.setParameter("dataFinal", LocalDateTime.now());
+        List<Object[]> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+    }
+
+    @Test
     public void usarMaiorMenorComData(){
         String jpql = "select p from Pedido p " +
                 " where p.dataCriacao > :dataInicial";
@@ -21,6 +33,7 @@ public class ExpressoesCondicionaisTest extends EntityManagerTest {
         List<Object[]> lista = typedQuery.getResultList();
         Assert.assertFalse(lista.isEmpty());
     }
+
     @Test
     public void usarMaiorMenor(){
         String jpql = "select p from Produto p " +

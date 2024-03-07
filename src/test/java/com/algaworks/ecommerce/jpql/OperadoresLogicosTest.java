@@ -10,8 +10,6 @@ import java.util.List;
 
 public class OperadoresLogicosTest extends EntityManagerTest {
 
-
-
     @Test
     public void usarOperadores(){
         String jpql = "select p from Pedido p where p.total > 100 and p.status = 'AGUARDANDO'";

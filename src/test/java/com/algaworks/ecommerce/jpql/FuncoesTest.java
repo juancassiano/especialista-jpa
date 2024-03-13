@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class FuncoesStringTest extends EntityManagerTest {
+public class FuncoesTest extends EntityManagerTest {
 
     @Test
-    public void aplicarFuncao(){
+    public void aplicarFuncaoString(){
         //concat, length,locate substring lower, upper trim
 
         String jpql = "select c.nome , concat('Categoria: ',c.nome) from Categoria c";

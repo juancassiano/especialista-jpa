@@ -6,8 +6,22 @@ import org.junit.jupiter.api.Test;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.TimeZone;
 
 public class FuncoesTest extends EntityManagerTest {
+
+    @Test
+    public void aplicarFuncaoData(){
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        String jpql = "select current_date, current_time, current_timestamp from Pedido p";
+
+        TypedQuery<Object []> typedQuery = entityManager.createQuery(jpql, Object[].class);
+
+        List<Object[]> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(arr -> System.out.println(arr[0] + " | " + arr[1] + " | " + arr[2]));
+    }
 
     @Test
     public void aplicarFuncaoString(){

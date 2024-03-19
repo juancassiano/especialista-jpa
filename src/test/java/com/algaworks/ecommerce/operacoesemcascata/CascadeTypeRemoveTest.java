@@ -5,7 +5,6 @@ import com.algaworks.ecommerce.model.ItemPedido;
 import com.algaworks.ecommerce.model.ItemPedidoId;
 import com.algaworks.ecommerce.model.Pedido;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 
 public class CascadeTypeRemoveTest extends EntityManagerTest {
 

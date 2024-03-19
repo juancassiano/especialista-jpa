@@ -2,7 +2,6 @@ package com.algaworks.ecommerce.operacoesemcascata;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.*;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
